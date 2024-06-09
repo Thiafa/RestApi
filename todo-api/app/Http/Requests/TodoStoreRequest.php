@@ -37,7 +37,7 @@ class TodoStoreRequest extends FormRequest
                 'success'   => false,
                 'message'   => 'Validation errors',
                 'data'      => $validator->errors()
-            ])
+            ], status: 400)
         );
     }
 }
