@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class TodoStoreRequest extends FormRequest
+class TodoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,9 +29,17 @@ class TodoStoreRequest extends FormRequest
             'status' => ['required', 'boolean']
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'required' => 'O :attribute precisa ser preenchido.',
+            'max' => 'O :attribute deve ter no máximo 127 caracteres.',
+            'status.boolean' => 'O :attribute precisa ser true ou false.',
+        ];
+    }
     public function failedValidation(Validator $validator)
     {
-
         throw new HttpResponseException(
             response()->json([
                 'success'   => false,

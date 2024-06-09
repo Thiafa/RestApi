@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\TodoController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\TodoController;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('/todo', TodoController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
+Route::apiResource('/todos', TodoController::class);
